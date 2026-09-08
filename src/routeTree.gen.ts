@@ -16,6 +16,7 @@ import { Route as BusinessesRouteImport } from './routes/businesses'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as InvestmentsRouteImport } from './routes/investments'
 import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as SaveRouteImport } from './routes/save'
 import { Route as StocksRouteImport } from './routes/stocks'
 import { Route as TransactionsRouteImport } from './routes/transactions'
 
@@ -54,6 +55,11 @@ const PropertiesRoute = PropertiesRouteImport.update({
   path: '/properties',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SaveRoute = SaveRouteImport.update({
+  id: '/save',
+  path: '/save',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StocksRoute = StocksRouteImport.update({
   id: '/stocks',
   path: '/stocks',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/investments': typeof InvestmentsRoute
   '/properties': typeof PropertiesRoute
+  '/save': typeof SaveRoute
   '/stocks': typeof StocksRoute
   '/transactions': typeof TransactionsRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/investments': typeof InvestmentsRoute
   '/properties': typeof PropertiesRoute
+  '/save': typeof SaveRoute
   '/stocks': typeof StocksRoute
   '/transactions': typeof TransactionsRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/investments': typeof InvestmentsRoute
   '/properties': typeof PropertiesRoute
+  '/save': typeof SaveRoute
   '/stocks': typeof StocksRoute
   '/transactions': typeof TransactionsRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/investments'
     | '/properties'
+    | '/save'
     | '/stocks'
     | '/transactions'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/investments'
     | '/properties'
+    | '/save'
     | '/stocks'
     | '/transactions'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/investments'
     | '/properties'
+    | '/save'
     | '/stocks'
     | '/transactions'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   InvestmentsRoute: typeof InvestmentsRoute
   PropertiesRoute: typeof PropertiesRoute
+  SaveRoute: typeof SaveRoute
   StocksRoute: typeof StocksRoute
   TransactionsRoute: typeof TransactionsRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/save': {
+      id: '/save'
+      path: '/save'
+      fullPath: '/save'
+      preLoaderRoute: typeof SaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stocks': {
       id: '/stocks'
       path: '/stocks'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   InvestmentsRoute: InvestmentsRoute,
   PropertiesRoute: PropertiesRoute,
+  SaveRoute: SaveRoute,
   StocksRoute: StocksRoute,
   TransactionsRoute: TransactionsRoute,
 }
